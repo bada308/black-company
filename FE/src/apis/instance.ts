@@ -8,6 +8,7 @@ import {
   setAccessToken,
   setTokenExpiration,
 } from "@/utils/authWithStorage";
+import LocalStorage from "@/utils/localStorage";
 
 const https = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
@@ -19,8 +20,8 @@ const https = axios.create({
 
 https.interceptors.request.use(
   async (config) => {
-    const accessToken = localStorage.getItem("accessToken")?.replace(/"/g, "");
-    const tokenExpiration = localStorage.getItem("tokenExpiration");
+    const accessToken = LocalStorage.getItem("accessToken")?.replace(/"/g, "");
+    const tokenExpiration = LocalStorage.getItem("tokenExpiration");
 
     if (accessToken && tokenExpiration) {
       const currentTime = new Date().getTime();
@@ -79,7 +80,7 @@ https.interceptors.response.use(
         window.location.href = "/login";
       }, 3000);
     }
-    error.message = errorMessage;
+    // error.message = errorMessage;
     return Promise.reject(error);
   },
 );
