@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import CheckBox from "../CheckBox";
-import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
+import { memberTableCheckedAtom } from "@/stores/memberTableCheckedAtom";
 import { FormType } from "@/types/form";
 
 interface MemberTableHeaderProps {

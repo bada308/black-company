@@ -3,7 +3,7 @@ import { useSetAtom } from "jotai";
 import MemberTableLoader from "../MemberTable.loader";
 import CreateMemberTableItem from "./CreateMemberTableItem";
 import { useGetMemberByActive } from "@/hooks/query/useMemberQuery";
-import { memberTableCheckedAtom } from "@/store/memberTableCheckedAtom";
+import { memberTableCheckedAtom } from "@/stores/memberTableCheckedAtom";
 import { ActiveStatusWithAll } from "@/types/member";
 
 interface CreateMemberTableItemContainerProps {
