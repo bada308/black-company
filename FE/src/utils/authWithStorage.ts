@@ -1,20 +1,22 @@
+import LocalStorage from "./localStorage";
+
 export const setAccessToken = (token: string) => {
-  localStorage.removeItem("accessToken");
-  localStorage.setItem("accessToken", token);
+  LocalStorage.removeItem("accessToken");
+  LocalStorage.setItem("accessToken", token);
 };
 
 export const setTokenExpiration = (accessExpiredTime: number) => {
-  localStorage.removeItem("tokenExpiration");
+  LocalStorage.removeItem("tokenExpiration");
   const accessExpiredTimeDate = new Date().getTime() + accessExpiredTime;
-  localStorage.setItem("tokenExpiration", accessExpiredTimeDate.toString());
+  LocalStorage.setItem("tokenExpiration", accessExpiredTimeDate.toString());
 };
 
 export const removeAccessToken = () => {
-  localStorage.removeItem("accessToken");
+  LocalStorage.removeItem("accessToken");
 };
 
 export const removeTokenExpiration = () => {
-  localStorage.removeItem("tokenExpiration");
+  LocalStorage.removeItem("tokenExpiration");
 };
 
 export const deleteTokenInfo = () => {
