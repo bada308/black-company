@@ -6,13 +6,12 @@ import ErrorFallback from "../../ErrorFallback";
 import UserActiveModalSkeleton from "./UserActiveModal.loader";
 import UserInfoSection from "./UserInfoSection";
 import ROUTES from "@/constants/ROUTES";
-import { useLogoutMutation } from "@/hooks/query/useAuthQuery";
+import { logout } from "@/features/auth";
 
 const LOGOUT = "로그아웃";
 
 const UserActiveModal = () => {
   const router = useRouter();
-  const { mutate: logout } = useLogoutMutation();
 
   const handleLogout = () => {
     logout();
