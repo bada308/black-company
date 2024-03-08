@@ -3,11 +3,7 @@ import { useRouter } from "next/navigation";
 import { postSlackLogin } from "@/apis/auth";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ROUTES from "@/constants/ROUTES";
-import {
-  deleteTokenInfo,
-  setAccessToken,
-  setTokenExpiration,
-} from "@/utils/authWithStorage";
+import storage from "@/utils/storage";
 
 export const useSlackLoginMutation = () => {
   const router = useRouter();
@@ -19,8 +15,8 @@ export const useSlackLoginMutation = () => {
     {
       onSuccess: (data) => {
         const { accessToken, accessExpiredTime } = data;
-        setAccessToken(accessToken);
-        setTokenExpiration(accessExpiredTime);
+        storage.setToken(accessToken);
+        storage.setTokenExpiration(accessExpiredTime);
 
         router.replace(ROUTES.MAIN);
       },
@@ -34,5 +30,10 @@ export const useSlackLoginMutation = () => {
 };
 
 export const useLogoutMutation = () => {
-  return { mutate: deleteTokenInfo };
+  return {
+    mutate: () => {
+      storage.removeToken();
+      storage.removeTokenExpiration();
+    },
+  };
 };
