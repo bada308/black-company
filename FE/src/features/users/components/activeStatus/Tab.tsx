@@ -4,7 +4,7 @@ import ACTIVE_STATUS from "@/constants/ACTIVE_STATUS";
 import MESSAGE from "@/constants/MESSAGE";
 import { ActiveStatus } from "@/types/member";
 
-const ActiveStatusTab = ({ activeStatus }) => {
+const UserActiveStatusTab = ({ activeStatus }) => {
   const { mutate: updateActiveStatus } = useUpdateActiveStatus();
 
   const handleChangeActiveStatus = (activeStatus: ActiveStatus) => {
@@ -26,4 +26,4 @@ const ActiveStatusTab = ({ activeStatus }) => {
   );
 };
 
-export default ActiveStatusTab;
+export default UserActiveStatusTab;
