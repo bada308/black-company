@@ -1,4 +1,4 @@
-import { TokenDto } from "../types";
+import { TokenDto } from ".";
 import API from "@/constants/API";
 import { https } from "@/lib/axios";
 
