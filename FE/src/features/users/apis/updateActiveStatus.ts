@@ -6,12 +6,12 @@ import MESSAGE from "@/constants/MESSAGE";
 import { https } from "@/lib/axios";
 import { ActiveStatus } from "@/types/member";
 
-interface PutMyActiveStatusRequest {
+interface UpdateActiveStatusRequest {
   activeStatus: ActiveStatus;
 }
 
-export const putMyActiveStatus = async (
-  body: PutMyActiveStatusRequest,
+export const updateActiveStatus = async (
+  body: UpdateActiveStatusRequest,
 ): Promise<ActiveStatusInfoDto> => {
   const { data } = await toast.promise(
     https({
@@ -28,12 +28,12 @@ export const putMyActiveStatus = async (
   return new ActiveStatusInfoDto(data?.data);
 };
 
-export const usePutMyActiveStatus = () => {
+export const useUpdateActiveStatus = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationKey: [API.USER.ACTIVE_STATUS],
     mutationFn: (activeStatus: ActiveStatus) =>
-      putMyActiveStatus({ activeStatus }),
+      updateActiveStatus({ activeStatus }),
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: [API.USER.ACTIVE_STATUS] });
     },
