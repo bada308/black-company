@@ -1,10 +1,14 @@
 import { useGetActiveStatus } from "../../apis/getActiveStatus";
+import UserActiveStatusEditorLoader from "./Editor.loader";
 import ActiveStatusTab from "./Tab";
 
 const UserActiveStatusEditor = () => {
   const {
     data: { name, activeStatus },
+    isLoading,
   } = useGetActiveStatus();
+
+  if (isLoading) return <UserActiveStatusEditorLoader />;
 
   return (
     <>

@@ -1,6 +1,6 @@
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 
-const UserActiveStatusLoader = () => {
+const UserActiveStatusEditorLoader = () => {
   return (
     <div className="h-40 w-full">
       <LoadingSpinner />
@@ -8,4 +8,4 @@ const UserActiveStatusLoader = () => {
   );
 };
 
-export default UserActiveStatusLoader;
+export default UserActiveStatusEditorLoader;
