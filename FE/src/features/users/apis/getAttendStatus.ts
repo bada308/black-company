@@ -3,7 +3,7 @@ import { AttendStatusInfoDto } from ".";
 import API from "@/constants/API";
 import { https } from "@/lib/axios";
 
-const getMyAttendStatus = async (
+const getAttendStatus = async (
   programId: number,
 ): Promise<AttendStatusInfoDto> => {
   const { data } = await https({
@@ -13,9 +13,9 @@ const getMyAttendStatus = async (
   return new AttendStatusInfoDto(data?.data);
 };
 
-export const useGetMyAttendStatus = (programId: number) => {
+export const useGetAttendStatus = (programId: number) => {
   return useQuery({
     queryKey: [API.USER.ATTEND_STATUS(programId)],
-    queryFn: () => getMyAttendStatus(programId),
+    queryFn: () => getAttendStatus(programId),
   });
 };
