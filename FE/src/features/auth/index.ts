@@ -1,5 +1,3 @@
-export * from "./api/slackLogin";
-export * from "./api/tokenReissue";
-export * from "./api/logout";
-
-export * from "./types";
+export * from "./apis/slackLogin";
+export * from "./apis/tokenReissue";
+export * from "./apis/logout";
