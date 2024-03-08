@@ -1,8 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { postTokenReissue } from "@/apis/auth";
 import ERROR_CODE from "@/constants/ERROR_CODE";
 import ERROR_MESSAGE from "@/constants/ERROR_MESSAGE";
+import { tokenReissue } from "@/features/auth";
 import storage from "@/utils/storage";
 
 const https = axios.create({
@@ -26,7 +26,7 @@ https.interceptors.request.use(
       );
 
       if (timeToExpiration < TOKEN_REISSUE_THRESHOLD) {
-        const { accessToken, accessExpiredTime } = await postTokenReissue();
+        const { accessToken, accessExpiredTime } = await tokenReissue();
         storage.setToken(accessToken);
         storage.setTokenExpiration(accessExpiredTime);
       }
@@ -50,7 +50,7 @@ https.interceptors.response.use(
       ERROR_MESSAGE[errorCode]?.message || ERROR_MESSAGE.UNKNOWN.message;
 
     if (errorCode === ERROR_CODE.AUTH.EXPIRED_ACCESS_TOKEN) {
-      const { accessToken, accessExpiredTime } = await postTokenReissue();
+      const { accessToken, accessExpiredTime } = await tokenReissue();
 
       storage.setToken(accessToken);
       storage.setTokenExpiration(accessExpiredTime);
