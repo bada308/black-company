@@ -14,7 +14,7 @@ export const getRedirectUrl = (provider: string) => {
         throw new Error("Environment variables are not set");
       }
 
-      return `https://slack.com/oauth/v2/authorize?client_id=${clientId}&scope=identity.basic&redirect_uri=${redirectUri}&state=${teamId}`;
+      return `https://slack.com/oauth/v2/authorize?client_id=${clientId}&scope=users.profile:read&redirect_uri=${redirectUri}&state=${teamId}`;
     }
     default:
       throw new Error(`Unknown provider: ${provider}`);
